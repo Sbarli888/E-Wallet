@@ -1,0 +1,1 @@
+<?php echo "SESSION SEKARANG ADALAH: " . $_SESSION["a5"] . "."; ?>

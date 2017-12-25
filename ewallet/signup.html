@@ -1,0 +1,53 @@
+<?php
+include('sql_connect.php');
+$error="";
+if(isset($_POST['btnsave']))
+{
+$stu_name=$_POST['txtstudent_name'];
+$address=$_POST['txtaddress'];
+$status=$_POST['dropstatus'];
+if(strlen($stu_name)<4)
+{$error="Student Name must at lease more than 4 character!!!";
+ }else
+{
+if($_POST['txtid']=="0")
+{
+//add new student
+$sql="insert into tb_student(stu_name,address,status) values
+('$stu_name','$address','$status')";
+$query=mysql_query($sql);
+}else
+{
+//update exist student
+echo "update";
+}
+}
+}
+?>
+<form action="" method="post">
+<table>
+<tr>
+<td>Full Name</td>
+<td><input type="text" name="txtstudent_name"> <input type="hidden" name="txtid" value="0"
+/></td>
+</tr>
+<tr>
+<td>Email</td>
+<td><textarea name="txtaddress"></textarea></td>
+</tr>
+<tr>
+<td>Status</td>
+<td>
+<select name="dropstatus">
+<option value="Active">Active</option>
+<option value="Suspend">Suspend</option>
+3 | P a g e
+</select>
+<td>
+</tr>
+<td></td>
+<td><input type="submit" value="Save" name="btnsave"></td>
+</tr>
+</form>
+</table>
+//
